@@ -38,3 +38,12 @@ jobs:
           ${{github.workspace}}/coverage/*.info:lcov  
           ${{github.workspace}}/coverage/clover.xml:clover  
         debug: true
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.javascript.lcov.reportPaths= ${{github.workspace}}/coverage/lcov.info
+          -Dsonar.testExecutionReportPaths= ${{github.workspace}}/test-report.xml
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
