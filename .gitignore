@@ -1,0 +1,16 @@
+.idea/
+.vscode/
+node_modules/
+build/
+dist/
+tmp/
+temp/
+logs
+coverage/
+coverage/lcov-report
+coverage/coverage-final.json
+coverage/clover.xml
+/.nyc_output/
+logs/
+**/.DS_Store
+test-report.xml
