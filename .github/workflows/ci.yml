@@ -42,8 +42,8 @@ jobs:
       uses: SonarSource/sonarcloud-github-action@master
       with:
         args: >
-          -Dsonar.javascript.lcov.reportPaths= /home/runner/work/jest-to-sonar/coverage/lcov.info
-          -Dsonar.testExecutionReportPaths= /home/runner/work/jest-to-sonar/test-report.xml
+          -Dsonar.javascript.lcov.reportPaths= ${{github.workspace}}/coverage/*.info:lcov
+          -Dsonar.testExecutionReportPaths= ${{github.workspace}}/test-report.xml
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
