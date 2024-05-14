@@ -3,19 +3,19 @@
   <file path="/tests/lib/SonarReporter.spec.ts">
     <testCase name="SonarReporter onTestResult should add test results to testFileResults" duration="0.001">
     </testCase>
-    <testCase name="SonarReporter onRunComplete should write XML file with test results" duration="0.001">
+    <testCase name="SonarReporter onRunComplete should write XML file with test results" duration="0">
     </testCase>
     <testCase name="SonarReporter onRunComplete should use default output file if not provided" duration="0">
     </testCase>
-    <testCase name="SonarReporter onRunComplete should use provided output file" duration="0.001">
+    <testCase name="SonarReporter onRunComplete should use provided output file" duration="0">
     </testCase>
   </file>
   <file path="/tests/helpers/utils.spec.ts">
-    <testCase name="generateXML generates correct XML with test cases of different statuses" duration="0.001">
+    <testCase name="generateXML generates correct XML with test cases of different statuses" duration="0">
     </testCase>
-    <testCase name="generateXML generates correct XML with test cases of 0 duration" duration="0">
+    <testCase name="generateXML generates correct XML with test cases of 0 duration" duration="0.001">
     </testCase>
-    <testCase name="generateXML handles empty testFileResults map" duration="0.001">
+    <testCase name="generateXML handles empty testFileResults map" duration="0">
     </testCase>
     <testCase name="generateXML handles empty path" duration="0">
     </testCase>
@@ -23,9 +23,9 @@
     </testCase>
     <testCase name="getRelativePath handles 'process.cwd()' in path" duration="0">
     </testCase>
-    <testCase name="getRelativePath handles empty input string" duration="0">
+    <testCase name="getRelativePath handles empty input string" duration="0.001">
     </testCase>
-    <testCase name="getRelativePath handles empty basePath" duration="0.001">
+    <testCase name="getRelativePath handles empty basePath" duration="0">
     </testCase>
   </file>
 </testExecutions>

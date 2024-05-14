@@ -31,6 +31,7 @@ module.exports = {
 
 We can customize the file name and path for the generated Sonar generic test execution report by passing parameters to    `outputFile` in jest config.
 
+```
 module.exports = {
     ...
         reporters: ['default',  ['jest-to-sonar', {
@@ -38,6 +39,7 @@ module.exports = {
         }]],
     ...
 }
+```
 
 ## Available Options
 
