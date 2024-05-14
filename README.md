@@ -43,7 +43,7 @@ module.exports = {
 
 | Parameter Name | Description          | Default Value | Type       |
 |----------------|----------------------|---------------|------------|
-| `outputFile`     |Report file name with path| `./coverage/test-report.xml` | String      |
+| `outputFile`     | Report file name with path Make sure the folder exists | `sonar-report.xml` | String      |
 | ...            | ...                  | ...           | ...        |
 
 
