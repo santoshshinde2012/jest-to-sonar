@@ -4,7 +4,7 @@
   "description": "Convert the Jest test case report to a Sonar generic test execution report.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig-build.json",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint . --ext .ts",
