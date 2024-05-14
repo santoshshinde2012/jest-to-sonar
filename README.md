@@ -3,11 +3,53 @@
 
 Convert the Jest test case report to a Sonar generic test execution report.
 
-### Contribution
+## Installation
 
-[Contribution guidelines for this project](CONTRIBUTING.md)
+- Using yarn:
 
-You can help this project by reporting bugs, asking for features, or sending in pull requests.
+  ```
+  yarn add -D jest-to-sonar
+  ```
+
+- Using npm:
+
+  ```
+  npm i -D jest-to-sonar
+  ```
+
+## Configuration
+
+Configure the jest config file `jest.config.js`, by adding `jest-to-sonar` to the list of reporters. Once you successfully run the jest test command, a Sonar generic test execution report will be created at `./coverage/test-report.xml`.
+
+```
+module.exports = {
+    ...
+    reporters: ['default',  'jest-to-sonar'],
+    ...
+}
+```
+
+We can customize the file name and path for the generated Sonar generic test execution report by passing parameters to    `outputFile` in jest config.
+
+module.exports = {
+    ...
+        reporters: ['default',  ['jest-to-sonar', {
+            outputFile: 'sonar-test-report.xml',
+        }]],
+    ...
+}
+
+## Available Options
+
+| Parameter Name | Description          | Default Value | Type       |
+|----------------|----------------------|---------------|------------|
+| `outputFile`     |Report file name with path| `./coverage/test-report.xml` | String      |
+| ...            | ...                  | ...           | ...        |
+
+
+### [Contribution](CONTRIBUTING.md)
+
+You can help this project by reporting [bugs](https://github.com/santoshshinde2012/jest-to-sonar/issues/new), asking for features, or sending in pull requests.
 
 <hr/>
 

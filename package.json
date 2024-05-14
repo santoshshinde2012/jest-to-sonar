@@ -1,5 +1,5 @@
 {
-  "name": "jest-sonar-report",
+  "name": "jest-to-sonar",
   "version": "1.0.0",
   "description": "Convert the Jest test case report to a Sonar generic test execution report.",
   "main": "dist/index.js",

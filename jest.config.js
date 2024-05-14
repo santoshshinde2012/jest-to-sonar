@@ -8,7 +8,7 @@ module.exports = {
     [
       './dist/index.js',
       {
-        outputFile: 'test-report.xml',
+        outputFile: './coverage/test-report.xml',
       },
     ],
   ],
