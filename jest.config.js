@@ -5,7 +5,7 @@ module.exports = {
   coveragePathIgnorePatterns: ['/node_modules/', '/tests/'],
   collectCoverage: true,
   reporters: ['default',  ['./dist/index.js', {
-    outputFile: './coverage/sonar-test-report.xml',
+    outputFile: './coverage/sonar-report.xml',
 }]],
   testEnvironment: 'node',
 };
