@@ -15,7 +15,7 @@
     </testCase>
     <testCase name="createFile function should handle error when writing file" duration="0">
     </testCase>
-    <testCase name="generateXML generates correct XML with test cases of different statuses" duration="0">
+    <testCase name="generateXML generates correct XML with test cases of different statuses" duration="0.001">
     </testCase>
     <testCase name="generateXML generates correct XML with test cases of 0 duration" duration="0">
     </testCase>
