@@ -1,5 +1,41 @@
-import { generateXML, getRelativePath } from '../../src/helpers/utils';
+import fs from 'fs';
+import path from 'path';
+import { createFile, generateXML, getRelativePath } from '../../src/helpers/utils';
 import { ITestCase } from '../../src/types/SonarReporter';
+
+jest.mock('fs');
+
+describe('createFile function', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should create file with given data', () => {
+    const fullPath = '/path/to/file.txt';
+    const data = 'Hello, world!';
+
+    createFile(fullPath, data);
+
+    expect(fs.existsSync).toHaveBeenCalledTimes(1);
+    expect(fs.mkdirSync).toHaveBeenCalledWith(path.dirname(fullPath), { recursive: true });
+    expect(fs.writeFileSync).toHaveBeenCalledWith(fullPath, data);
+  });
+
+  it('should handle error when writing file', () => {
+    const fullPath = '/path/to/file.txt';
+    const data = 'Hello, world!';
+    const error = new Error('File write error');
+
+    (fs.existsSync as jest.Mock).mockReturnValueOnce(true);
+    (fs.writeFileSync as jest.Mock).mockImplementationOnce(() => { throw error; });
+
+    createFile(fullPath, data);
+
+    expect(fs.existsSync).toHaveBeenCalledTimes(1);
+    expect(fs.mkdirSync).not.toHaveBeenCalled();
+    expect(fs.writeFileSync).toHaveBeenCalledWith(fullPath, data);
+  });
+});
 
 describe('generateXML', () => {
   test('generates correct XML with test cases of different statuses', () => {

@@ -42,7 +42,21 @@ jobs:
       uses: SonarSource/sonarcloud-github-action@master
       with: 
         args: >
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.organization=santoshshinde2012
+          -Dsonar.projectKey=santoshshinde2012_jest-to-sonar
+          -Dsonar.projectName=jest-to-sonar
+          -Dsonar.projectVersion=1.0
+          -Dsonar.sources=.
+          -Dsonar.exclusions=**/tests/**/*.ts
+          -Dsonar.test.inclusions=**/tests/**/*.ts
+          -Dsonar.coverage.exclusions=**/tests/**/*.ts,node_modules/*,coverage/lcov-report/*
+          -Dsonar.language=ts
+          -Dsonar.tests=./tests
+          -Dsonar.verbose=false
+          -Dsonar.sourceEncoding=UTF-8
           -Dsonar.javascript.lcov.reportPaths=${{github.workspace}}/coverage/lcov.info 
+          -Dsonar.testExecutionReportPaths=${{github.workspace}}/coverage/sonar-report.xml
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

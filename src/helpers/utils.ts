@@ -1,3 +1,5 @@
+import path from 'path';
+import * as fs from 'fs';
 import { ITestCase } from '../types/SonarReporter';
 
 function generateXML(testFileResults: Map<string, ITestCase[]>): string {
@@ -34,4 +36,19 @@ function getRelativePath(fullPath: string): string {
   return relativePath;
 }
 
-export { generateXML, getRelativePath };
+function createFile(fullPath: string, data: string): void {
+  const dir = path.dirname(fullPath);
+
+  // Create folders if they don't exist
+  if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+  }
+
+  try {
+      fs.writeFileSync(fullPath, data);
+  } catch (err) {
+      console.error(`Error creating file at ${fullPath}:`, err);
+  }
+}
+
+export { generateXML, getRelativePath, createFile };

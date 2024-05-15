@@ -41,7 +41,7 @@ describe('SonarReporter', () => {
           },
           {
             fullName: 'Test 3',
-            duration: 0,
+            duration: undefined,
             status: 'skipped',
             ancestorTitles: [],
             failureDetails: [],
@@ -101,7 +101,7 @@ describe('SonarReporter', () => {
 
       reporter.onRunComplete();
 
-      expect(fs.writeFileSync).toHaveBeenCalledWith('sonar-report.xml', '<xml></xml>');
+      expect(fs.writeFileSync).toHaveBeenCalledWith('./coverage/sonar-report.xml', '<xml></xml>');
       expect(generateXMLMock).toHaveBeenCalledWith(reporter['testFileResults']);
     });
 
@@ -123,7 +123,7 @@ describe('SonarReporter', () => {
 
       reporter.onRunComplete();
 
-      expect(fs.writeFileSync).toHaveBeenCalledWith('sonar-report.xml', '<xml></xml>');
+      expect(fs.writeFileSync).toHaveBeenCalledWith('./coverage/sonar-report.xml', '<xml></xml>');
       expect(generateXMLMock).toHaveBeenCalledWith(reporter['testFileResults']);
     });
   });
