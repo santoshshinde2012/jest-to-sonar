@@ -27,7 +27,9 @@ describe('createFile function', () => {
     const error = new Error('File write error');
 
     (fs.existsSync as jest.Mock).mockReturnValueOnce(true);
-    (fs.writeFileSync as jest.Mock).mockImplementationOnce(() => { throw error; });
+    (fs.writeFileSync as jest.Mock).mockImplementationOnce(() => {
+      throw error;
+    });
 
     createFile(fullPath, data);
 

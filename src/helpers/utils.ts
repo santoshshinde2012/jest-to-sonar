@@ -41,13 +41,13 @@ function createFile(fullPath: string, data: string): void {
 
   // Create folders if they don't exist
   if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
+    fs.mkdirSync(dir, { recursive: true });
   }
 
   try {
-      fs.writeFileSync(fullPath, data);
+    fs.writeFileSync(fullPath, data);
   } catch (err) {
-      console.error(`Error creating file at ${fullPath}:`, err);
+    console.error(`Error creating file at ${fullPath}:`, err);
   }
 }
 
