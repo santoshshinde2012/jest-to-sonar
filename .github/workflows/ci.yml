@@ -50,7 +50,6 @@ jobs:
           -Dsonar.language=ts
           -Dsonar.verbose=false
           -Dsonar.sources=.
-          -Dsonar.exclusions=**/tests/**/*.ts
           -Dsonar.test.inclusions=**/tests/**/*.ts
           -Dsonar.coverage.exclusions=**/tests/**/*.ts,node_modules/*,coverage/lcov-report/*
           -Dsonar.sourceEncoding=UTF-8
