@@ -12,7 +12,9 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
       const testName = test.name.replace(/"/g, "'");
       const failureMessage = test.failureMessages?.toString() ?? 'Error';
 
-      lines.push(`    <testCase name="${testName}" duration="${test.duration}"${test.status === 'passed' ? ' /' : ''}>`);
+      lines.push(
+        `    <testCase name="${testName}" duration="${test.duration}"${test.status === 'passed' ? ' /' : ''}>`,
+      );
 
       if (test.status === 'skipped' || test.status === 'pending') {
         lines.push(`      <skipped message="${testName}" />`);
@@ -32,7 +34,6 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
 
   return lines.join('\n');
 }
-
 
 function getRelativePath(fullPath: string): string {
   const basePath = process.cwd();
