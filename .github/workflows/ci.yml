@@ -49,7 +49,6 @@ jobs:
           -Dsonar.projectVersion=1.0
           -Dsonar.sources=.
           -Dsonar.exclusions=**/tests/**/*.ts
-          -Dsonar.test.inclusions=**/tests/**/*.ts
           -Dsonar.coverage.exclusions=**/tests/**/*.ts,node_modules/*,coverage/lcov-report/*
           -Dsonar.language=ts
           -Dsonar.tests=./tests

@@ -13,7 +13,7 @@
     <testCase name="createFile function should create file with given data" duration="0" />
     <testCase name="createFile function should handle error when writing file" duration="0.001" />
     <testCase name="generateXML generates correct XML with test cases of different statuses" duration="0" />
-    <testCase name="generateXML generates correct XML with test cases of 0 duration" duration="0.001" />
+    <testCase name="generateXML generates correct XML with test cases of 0 duration" duration="0" />
     <testCase name="generateXML handles empty testFileResults map" duration="0" />
     <testCase name="generateXML handles empty path" duration="0" />
     <testCase name="getRelativePath generates relative path correctly" duration="0" />
