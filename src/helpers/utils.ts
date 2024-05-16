@@ -10,7 +10,7 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
 
     for (const test of testCases) {
       xml += `    <testCase name="${test.name.replace(/"/g, "'")}" duration="${test.duration / 1000}" ${test.status === 'passed' ? '/' : ''}>\n`;
-      
+
       if (test.status === 'skipped' || test.status === 'pending') {
         xml += '      <skipped/>\n';
       } else if (test.status === 'failed') {
