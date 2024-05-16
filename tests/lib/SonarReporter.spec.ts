@@ -105,6 +105,17 @@ describe('SonarReporter', () => {
       expect(generateXMLMock).toHaveBeenCalledWith(reporter['testFileResults']);
     });
 
+    it.skip('should use default output file if not provided - skipped', () => {
+      const reporter = new SonarReporter({}, { outputFile: 'sonar-report.xml' });
+      reporter['testFileResults'] = new Map();
+      const generateXMLMock = jest.spyOn(utils, 'generateXML').mockReturnValue('<xml></xml>');
+
+      reporter.onRunComplete();
+
+      expect(fs.writeFileSync).toHaveBeenCalledWith('sonar-report.xml', '<xml></xml>');
+      expect(generateXMLMock).toHaveBeenCalledWith(reporter['testFileResults']);
+    });
+
     it('should use default output file if not provided', () => {
       const reporter = new SonarReporter({}, { outputFile: 'sonar-report.xml' });
       reporter['testFileResults'] = new Map();

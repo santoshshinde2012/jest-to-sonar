@@ -9,9 +9,9 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
     xml += `  <file path="${path}">\n`;
 
     for (const test of testCases) {
-      xml += `    <testCase name="${test.name.replace(/"/g, "'")}" duration="${test.duration / 1000}">\n`;
-
-      if (test.status === 'skipped') {
+      xml += `    <testCase name="${test.name.replace(/"/g, "'")}" duration="${test.duration / 1000}" ${test.status === 'passed' ? '/' : ''}>\n`;
+      
+      if (test.status === 'skipped' || test.status === 'pending') {
         xml += '      <skipped/>\n';
       } else if (test.status === 'failed') {
         xml += '      <failure/>\n';
@@ -19,7 +19,7 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
         xml += '      <disabled/>\n';
       }
 
-      xml += '    </testCase>\n';
+      if (test.status !== 'passed') xml += '    </testCase>\n';
     }
 
     xml += '  </file>\n';
