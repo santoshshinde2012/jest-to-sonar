@@ -3,32 +3,36 @@ import * as fs from 'fs';
 import { ITestCase } from '../types/SonarReporter';
 
 function generateXML(testFileResults: Map<string, ITestCase[]>): string {
-  let xml = `<testExecutions version="1">\n`;
+  const lines: string[] = ['<testExecutions version="1">'];
 
   for (const [path, testCases] of testFileResults.entries()) {
-    xml += `  <file path="${path}">\n`;
+    lines.push(`  <file path="${path}">`);
 
     for (const test of testCases) {
-      xml += `    <testCase name="${test.name.replace(/"/g, "'")}" duration="${test.duration}" ${test.status === 'passed' ? '/' : ''}>\n`;
+      const testName = test.name.replace(/"/g, "'");
+      const failureMessage = test.failureMessages?.toString() ?? 'Error';
+
+      lines.push(`    <testCase name="${testName}" duration="${test.duration}"${test.status === 'passed' ? ' /' : ''}>`);
 
       if (test.status === 'skipped' || test.status === 'pending') {
-        xml += `      <skipped message="${test.name.replace(/"/g, "'")}" />\n`;
+        lines.push(`      <skipped message="${testName}" />`);
       } else if (test.status === 'failed') {
-        xml += `      <failure message="Error">${test.failureMessages?.toString() || 'Error'}</failure>\n`;
+        lines.push(`      <failure message="Error">${failureMessage}</failure>`);
       } else if (test.status === 'disabled') {
-        xml += '      <disabled message="Error" />\n';
+        lines.push('      <disabled message="Error" />');
       }
 
-      if (test.status !== 'passed') xml += '    </testCase>\n';
+      if (test.status !== 'passed') lines.push('    </testCase>');
     }
 
-    xml += '  </file>\n';
+    lines.push('  </file>');
   }
 
-  xml += '</testExecutions>';
+  lines.push('</testExecutions>');
 
-  return xml;
+  return lines.join('\n');
 }
+
 
 function getRelativePath(fullPath: string): string {
   const basePath = process.cwd();
