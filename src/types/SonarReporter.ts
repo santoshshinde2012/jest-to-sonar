@@ -4,17 +4,13 @@ interface ITestCase {
   name: string;
   duration: number;
   status: Status;
+  failureMessages?: string[];
 }
 
 interface IConfig {
   outputFile?: string;
 }
 
-interface ITestFileResult {
-  path: string;
-  testCases: ITestCase[];
-}
-
 type TestFileResults = Map<string, ITestCase[]>;
 
-export { ITestCase, IConfig, ITestFileResult, TestFileResults };
+export { ITestCase, IConfig, TestFileResults };

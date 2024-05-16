@@ -46,15 +46,16 @@ describe('generateXML', () => {
       { name: 'Test 2', duration: 200, status: 'failed' },
       { name: 'Test 3', duration: 300, status: 'skipped' },
       { name: 'Test 4', duration: 400, status: 'disabled' },
+      { name: 'Test 5', duration: 500, status: 'failed', failureMessages: [] },
     ];
 
-    const testFileResults = new Map([['/path/to/test/file', testCases]]);
+    const testFileResults = new Map([['path/to/test/file', testCases]]);
     const generatedXML = generateXML(testFileResults);
 
-    expect(generatedXML).toEqual(expect.stringContaining('path="/path/to/test/file"'));
-    expect(generatedXML).toEqual(expect.stringContaining('<failure/>'));
-    expect(generatedXML).toEqual(expect.stringContaining('<skipped/>'));
-    expect(generatedXML).toEqual(expect.stringContaining('<disabled/>'));
+    expect(generatedXML).toEqual(expect.stringContaining('path="path/to/test/file"'));
+    expect(generatedXML).toEqual(expect.stringContaining('<failure message="Error">Error</failure>'));
+    expect(generatedXML).toEqual(expect.stringContaining(`<skipped message="Test 3" />`));
+    expect(generatedXML).toEqual(expect.stringContaining('<disabled message="Error" />'));
   });
 
   test('generates correct XML with test cases of 0 duration', () => {
@@ -87,7 +88,7 @@ describe('getRelativePath', () => {
 
   test('handles "process.cwd()" in path', () => {
     const fullPath = process.cwd() + '/path/to/test/file';
-    const expectedRelativePath = '/path/to/test/file';
+    const expectedRelativePath = 'path/to/test/file';
     expect(getRelativePath(fullPath)).toEqual(expectedRelativePath);
   });
 

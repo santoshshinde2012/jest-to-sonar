@@ -78,9 +78,9 @@ describe('SonarReporter', () => {
       reporter.onTestResult(test as Test, result);
 
       expect(reporter['testFileResults'].get('file/path')).toEqual([
-        { name: 'Test 1', duration: 100, status: 'passed' },
-        { name: 'Test 2', duration: 50, status: 'failed' },
-        { name: 'Test 3', duration: 0, status: 'skipped' },
+        { name: 'Test 1', duration: 100, status: 'passed', failureMessages: [] },
+        { name: 'Test 2', duration: 50, status: 'failed', failureMessages: [] },
+        { name: 'Test 3', duration: 0, status: 'skipped', failureMessages: [] },
       ]);
     });
   });

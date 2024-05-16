@@ -13,10 +13,11 @@ export class SonarReporter<T extends IConfig> implements Reporter {
 
   onTestResult(test: Test, result: TestResult) {
     const { testResults } = result;
-    const testCases = testResults.map(({ fullName, duration, status }) => ({
+    const testCases = testResults.map(({ fullName, duration, status, failureMessages }) => ({
       name: fullName,
       duration: duration ?? 0,
       status,
+      failureMessages: failureMessages
     }));
     this.testFileResults.set(getRelativePath(test.path), testCases);
   }

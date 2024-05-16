@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { ITestCase } from '../types/SonarReporter';
 
 function generateXML(testFileResults: Map<string, ITestCase[]>): string {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<testExecutions version="1">\n`;
+  let xml = `<testExecutions version="1">\n`;
 
   for (const [path, testCases] of testFileResults.entries()) {
     xml += `  <file path="${path}">\n`;
@@ -12,11 +12,11 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
       xml += `    <testCase name="${test.name.replace(/"/g, "'")}" duration="${test.duration}" ${test.status === 'passed' ? '/' : ''}>\n`;
 
       if (test.status === 'skipped' || test.status === 'pending') {
-        xml += '      <skipped/>\n';
+        xml += `      <skipped message="${test.name.replace(/"/g, "'")}" />\n`;
       } else if (test.status === 'failed') {
-        xml += '      <failure/>\n';
+        xml += `      <failure message="Error">${test.failureMessages?.toString() || 'Error'}</failure>\n`;
       } else if (test.status === 'disabled') {
-        xml += '      <disabled/>\n';
+        xml += '      <disabled message="Error" />\n';
       }
 
       if (test.status !== 'passed') xml += '    </testCase>\n';
@@ -32,7 +32,7 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
 
 function getRelativePath(fullPath: string): string {
   const basePath = process.cwd();
-  const relativePath = fullPath.replace(basePath, '');
+  const relativePath = fullPath.replace(`${basePath}/`, '');
   return relativePath;
 }
 
