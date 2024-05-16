@@ -17,7 +17,7 @@ export class SonarReporter<T extends IConfig> implements Reporter {
       name: fullName,
       duration: duration ?? 0,
       status,
-      failureMessages: failureMessages
+      failureMessages: failureMessages,
     }));
     this.testFileResults.set(getRelativePath(test.path), testCases);
   }
