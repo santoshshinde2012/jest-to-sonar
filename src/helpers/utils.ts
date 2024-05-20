@@ -23,7 +23,7 @@ function generateXML(testFileResults: Map<string, ITestCase[]>): string {
 }
 
 function generateTestCases(testCases: ITestCase[]): string[] {
-  return testCases.flatMap(test => generateTestCase(test));
+  return testCases.flatMap((test) => generateTestCase(test));
 }
 
 function generateTestCase(test: ITestCase): string[] {
@@ -31,9 +31,7 @@ function generateTestCase(test: ITestCase): string[] {
   const testName = test.name.replace(/"/g, "'");
   const failureMessage = test.failureMessages?.toString() ?? 'Error';
 
-  lines.push(
-    `    <testCase name="${testName}" duration="${test.duration}"${test.status === 'passed' ? ' /' : ''}>`,
-  );
+  lines.push(`    <testCase name="${testName}" duration="${test.duration}"${test.status === 'passed' ? ' /' : ''}>`);
 
   if (test.status === 'skipped' || test.status === 'pending') {
     lines.push(`      <skipped message="${testName}" />`);
@@ -49,7 +47,6 @@ function generateTestCase(test: ITestCase): string[] {
 
   return lines;
 }
-
 
 function createFile(fullPath: string, data: string): void {
   const dir = path.dirname(fullPath);
