@@ -38,6 +38,12 @@ jobs:
           ${{github.workspace}}/coverage/*.info:lcov  
           ${{github.workspace}}/coverage/clover.xml:clover  
         debug: true
+    - name: Snyk Scan
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        command: monitor
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       with: 

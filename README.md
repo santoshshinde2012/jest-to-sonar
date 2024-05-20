@@ -1,7 +1,26 @@
-# jest-to-sonar
- [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=santoshshinde2012_jest-to-sonar&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=santoshshinde2012_jest-to-sonar)![Github action workflow status](https://github.com/santoshshinde2012/jest-to-sonar/actions/workflows/ci.yml/badge.svg?branch=main)![CodeQL](https://github.com/santoshshinde2012/jest-to-sonar/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)![njsscan Analysis](https://github.com/santoshshinde2012/jest-to-sonar/actions/workflows/njsscan.yml/badge.svg?branch=main)![Maintainability](https://api.codeclimate.com/v1/badges/25a158be62f89833fcda/maintainability)![Test Coverage](https://api.codeclimate.com/v1/badges/25a158be62f89833fcda/test_coverage)
+<h1 align="center"><a href="https://blog.santoshshinde.com/enhancing-code-quality-a-deep-dive-into-jest-sonarqube-and-github-actions-for-f8862f8e5848" target=”_blank”>jest-to-sonar</a></h1>
 
-Convert the Jest test case report to a Sonar generic test execution report.
+<p align="center">Convert the Jest test case report to a Sonar generic test execution report.</p>
+
+
+<p align="center">
+  <a href="https://sonarcloud.io/project/overview?id=santoshshinde2012_jest-to-sonar">
+     <img src="https://sonarcloud.io/api/project_badges/measure?project=santoshshinde2012_jest-to-sonar&metric=alert_status" alt="Quality Gate Status" />
+  </a>
+  <a href="https://github.com/santoshshinde2012/jest-to-sonar/actions/workflows/ci.yml" target=”_blank”>
+     <img src="https://github.com/santoshshinde2012/jest-to-sonar/actions/workflows/ci.yml/badge.svg?branch=main" alt="Github action workflow status" />
+  </a>
+  <a href="https://codeclimate.com/github/santoshshinde2012/jest-to-sonar/maintainability" target=”_blank”>
+    <img src="https://api.codeclimate.com/v1/badges/25a158be62f89833fcda/maintainability" alt="maintainability" />
+  </a>
+  <a href="https://codeclimate.com/github/santoshshinde2012/jest-to-sonar/test_coverage" target=”_blank”>
+    <img src="https://api.codeclimate.com/v1/badges/25a158be62f89833fcda/test_coverage" alt="test_coverage" />
+  </a>
+   <a href="https://snyk.io/test/github/santoshshinde2012/jest-to-sonar" target=”_blank”>
+     <img src="https://snyk.io/test/github/santoshshinde2012/jest-to-sonar/badge.svg?style=flat-square" alt="" />
+  </a>
+</p>
+
 
 ## Installation
 
